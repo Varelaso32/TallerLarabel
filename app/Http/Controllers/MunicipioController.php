@@ -34,7 +34,12 @@ class MunicipioController extends Controller
         $municipio->depa_codi = $request->code;
         $municipio->save();
 
-        return redirect()->route('municipio.index');
+        $municipios = DB::table('tb_municipio')
+            ->join('tb_departamento', 'tb_municipio.depa_codi', '=', 'tb_departamento.depa_codi')
+            ->select('tb_municipio.*', 'tb_departamento.depa_nomb')
+            ->get();
+
+        return view('municipio.index', ['municipios' => $municipios]);
     }
 
     public function edit(string $id)
@@ -54,7 +59,12 @@ class MunicipioController extends Controller
         $municipio->depa_codi = $request->code;
         $municipio->save();
 
-        return redirect()->route('municipio.index');
+        $municipios = DB::table('tb_municipio')
+            ->join('tb_departamento', 'tb_municipio.depa_codi', '=', 'tb_departamento.depa_codi')
+            ->select('tb_municipio.*', 'tb_departamento.depa_nomb')
+            ->get();
+
+        return view('municipio.index', ['municipios' => $municipios]);
     }
 
     public function destroy(string $id)
@@ -62,6 +72,11 @@ class MunicipioController extends Controller
         $municipio = Municipio::find($id);
         $municipio->delete();
 
-        return redirect()->route('municipio.index');
+        $municipios = DB::table('tb_municipio')
+            ->join('tb_departamento', 'tb_municipio.depa_codi', '=', 'tb_departamento.depa_codi')
+            ->select('tb_municipio.*', 'tb_departamento.depa_nomb')
+            ->get();
+
+        return view('municipio.index', ['municipios' => $municipios]);
     }
 }
