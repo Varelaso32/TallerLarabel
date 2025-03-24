@@ -10,31 +10,46 @@
 
 <body>
 
-    <div class="container">
-        <h1>Commune List</h1>
-        <a href="{{ route('comunas.create') }}" class="btn btn-success">Add</a>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Code</th>
-                    <th scope="col">Commune</th>
-                    <th scope="col">Municipality</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($comunas as $comuna)
-                <tr>
-                    <th scope="row">{{ $comuna->comu_codi }}</th>
-                    <td>{{ $comuna->comu_nomb }}</td>
-                    <td>{{ $comuna->muni_nomb }}</td>
-                    <td><span>Actions</span></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-primary">Commune List</h1>
+            <a href="{{ route('comunas.create') }}" class="btn btn-success">Add New Commune</a>
+        </div>
 
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Commune</th>
+                        <th scope="col">Municipality</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($comunas as $comuna)
+                    <tr>
+                        <th scope="row">{{ $comuna->comu_codi }}</th>
+                        <td>{{ $comuna->comu_nomb }}</td>
+                        <td>{{ $comuna->muni_nomb }}</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a href="#" class="btn btn-warning btn-sm">Edit</a>
+
+                                <form action="{{ route('comunas.destroy', ['comuna' => $comuna->comu_codi]) }}" method="POST" style="display: inline;">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
