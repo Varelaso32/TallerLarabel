@@ -34,7 +34,7 @@
                         <td>{{ $comuna->muni_nomb }}</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ route('comunas.edit', ['comuna' => $comuna->comu_codi]) }}" class="btn btn-info btn-sm">Edit</a>
 
                                 <form action="{{ route('comunas.destroy', ['comuna' => $comuna->comu_codi]) }}" method="POST" style="display: inline;">
                                     @method('delete')
@@ -43,6 +43,7 @@
                                 </form>
                             </div>
                         </td>
+
 
                     </tr>
                     @endforeach
