@@ -21,6 +21,7 @@
                     <tr>
                         <th scope="col">Code</th>
                         <th scope="col">Department</th>
+                        <th scope="col">Pais</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>

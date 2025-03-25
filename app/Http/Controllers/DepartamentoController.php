@@ -36,44 +36,49 @@ class DepartamentoController extends Controller
         return redirect()->route('departamentos.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $paises = DB::table('tb_pais')->orderBy('pais_nomb')->get();
+
+        return view('departamento.edit', [
+            'departamento' => $departamento,
+            'paises' => $paises
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamento->depa_nomb = $request->name;
+        $departamento->pais_codi = $request->country_code;
+        $departamento->save();
+
+
+        $departamentos = DB::table('tb_departamento')
+            ->join('tb_pais', 'tb_departamento.pais_codi', '=', 'tb_pais.pais_codi')
+            ->select('tb_departamento.*', 'tb_pais.pais_nomb')
+            ->get();
+
+        return view('departamento.index', ['departamentos' => $departamentos]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $departamento = Departamento::find($id);
         $departamento->delete();
 
         $departamentos = DB::table('tb_departamento')
-        ->join('tb_pais', 'tb_departamento.pais_codi', '=', 'tb_pais.pais_codi')
-        ->select('tb_departamento.*', 'tb_pais.pais_nomb')
-        ->get();
-        
-        return view('departamento.index', ['departamentos' => $departamentos]);
+            ->join('tb_pais', 'tb_departamento.pais_codi', '=', 'tb_pais.pais_codi')
+            ->select('tb_departamento.*', 'tb_pais.pais_nomb')
+            ->get();
 
+        return view('departamento.index', ['departamentos' => $departamentos]);
     }
 }
