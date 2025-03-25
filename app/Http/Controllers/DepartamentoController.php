@@ -19,20 +19,21 @@ class DepartamentoController extends Controller
         return view('departamento.index', ['departamentos' => $departamentos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        $paises = DB::table('tb_pais')->orderBy('pais_nomb')->get();
+        return view('departamento.new', ['paises' => $paises]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $departamento = new Departamento();
+        $departamento->depa_nomb = $request->name;
+        $departamento->pais_codi = $request->country_code;
+        $departamento->save();
+
+        return redirect()->route('departamentos.index');
     }
 
     /**
