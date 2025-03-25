@@ -8,13 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class DepartamentoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $departamentos = DB::table('tb_departamento')
-            ->orderBy('depa_nomb')
+            ->join('tb_pais', 'tb_departamento.pais_codi', '=', 'tb_pais.pais_codi')
+            ->select('tb_departamento.*', 'tb_pais.pais_nomb')
             ->get();
 
         return view('departamento.index', ['departamentos' => $departamentos]);

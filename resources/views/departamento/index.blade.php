@@ -29,6 +29,7 @@
                     <tr>
                         <th scope="row">{{ $departamento->depa_codi }}</th>
                         <td>{{ $departamento->depa_nomb }}</td>
+                        <td>{{ $departamento->pais_nomb }}</td>
                         <td>
                             <div class="d-flex gap-2">
                                 <a href="{{ route('departamentos.edit', ['departamento' => $departamento->depa_codi]) }}" class="btn btn-info btn-sm">Edit</a>
