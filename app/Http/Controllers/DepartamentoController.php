@@ -33,7 +33,12 @@ class DepartamentoController extends Controller
         $departamento->pais_codi = $request->country_code;
         $departamento->save();
 
-        return redirect()->route('departamentos.index');
+        $departamentos = DB::table('tb_departamento')
+            ->join('tb_pais', 'tb_departamento.pais_codi', '=', 'tb_pais.pais_codi')
+            ->select('tb_departamento.*', 'tb_pais.pais_nomb')
+            ->get();
+
+        return view('departamento.index', ['departamentos' => $departamentos]);
     }
 
 
