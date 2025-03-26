@@ -8,30 +8,27 @@ use Illuminate\Support\Facades\DB;
 
 class PaisController extends Controller
 {
-   
+
     public function index()
     {
-        $paises = DB::table('tb_pais')
-            ->select('tb_pais.*')
-            ->get();
-
+        $paises = DB::table('tb_pais')->orderBy('pais_nomb')->get();
         return view('pais.index', ['paises' => $paises]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('pais.new');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $pais = new Pais();
+        $pais->pais_codi = strtoupper(substr($request->name, 0, 3)); // Solo 3 caracteres
+        $pais->pais_nomb = $request->name;
+        $pais->pais_capi = $request->capital ?? rand(1000, 9999); // Asignar valor por defecto
+        $pais->save();
+
+        return redirect()->route('paises.index');
     }
 
     /**
