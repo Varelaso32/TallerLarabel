@@ -11,17 +11,17 @@
 <body>
     <div class="container mt-5">
         <div class="card shadow-sm rounded p-4">
-            <h1 class="text-primary mb-4">Add Department</h1>
+            <h1 class="text-primary mb-4">Agregar Departamento</h1>
 
             <form method="POST" action="{{ route('departamentos.store') }}">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Department Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required placeholder="Enter department name">
+                    <label for="name" class="form-label">Nombre Departamento</label>
+                    <input type="text" class="form-control" id="name" name="name" required placeholder="Ingrese nombre del departamento">
                 </div>
 
                 <div class="mb-3">
-                    <label for="country" class="form-label">Country</label>
+                    <label for="country" class="form-label">Pais</label>
                     <select class="form-select" id="country" name="country_code" required>
                         <option selected disabled value="">Choose one...</option>
                         @foreach ($paises as $pais)
@@ -31,8 +31,8 @@
                 </div>
 
                 <div class="d-flex justify-content-between mt-4">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="{{ route('departamentos.index') }}" class="btn btn-warning">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{{ route('departamentos.index') }}" class="btn btn-warning">Cancelar</a>
                 </div>
             </form>
         </div>

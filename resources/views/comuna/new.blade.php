@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-5">
         <div class="card shadow-sm rounded p-4">
-            <h1 class="text-primary mb-4">Add Comuna</h1>
+            <h1 class="text-primary mb-4">Agregar comunas</h1>
 
             <form method="POST" action="{{ route('comunas.store') }}">
                 @csrf
@@ -22,12 +22,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Commune</label>
-                    <input type="text" class="form-control" id="name" name="name" required placeholder="Comuna name.">
+                    <label for="name" class="form-label">Nombre Comuna</label>
+                    <input type="text" class="form-control" id="name" name="name" required placeholder="Ingrese nombre de la comuna">
                 </div>
 
                 <div class="mb-3">
-                    <label for="municipality" class="form-label">Municipality</label>
+                    <label for="municipality" class="form-label">Municipio</label>
                     <select class="form-select" id="municipality" name="code" required>
                         <option selected disabled value="">Choose one...</option>
                         @foreach ($municipios as $municipio)
@@ -37,8 +37,8 @@
                 </div>
 
                 <div class="d-flex justify-content-between mt-4">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="{{ route('comunas.index') }}" class="btn btn-warning">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{{ route('comunas.index') }}" class="btn btn-warning">Cancelar</a>
                 </div>
             </form>
         </div>

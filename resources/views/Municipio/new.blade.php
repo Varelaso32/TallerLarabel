@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-5">
         <div class="card shadow-sm rounded p-4">
-            <h1 class="text-primary mb-4">Add Municipality</h1>
+            <h1 class="text-primary mb-4">Agregar Municipio/h1>
 
             <form method="POST" action="{{ route('municipios.store') }}">
                 @csrf
@@ -22,12 +22,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Municipality</label>
+                    <label for="name" class="form-label">Municipio:</label>
                     <input type="text" class="form-control" id="name" name="name" required placeholder="Municipality name.">
                 </div>
 
                 <div class="mb-3">
-                    <label for="department" class="form-label">Department</label>
+                    <label for="department" class="form-label">Departamento:</label>
                     <select class="form-select" id="department" name="code" required>
                         <option selected disabled value="">Choose one...</option>
                         @foreach ($departamentos as $departamento)

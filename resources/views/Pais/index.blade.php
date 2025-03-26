@@ -11,8 +11,8 @@
 <body>
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="text-primary">Country List</h1>
-            <a href="{{ route('paises.create') }}" class="btn btn-success">Add New Country</a>
+            <h1 class="text-primary">Listado de Pais</h1>
+            <a href="{{ route('paises.create') }}" class="btn btn-success">Agregar nuevo Pais</a>
         </div>
 
         <div class="table-responsive shadow-sm rounded">
@@ -20,9 +20,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Code</th>
-                        <th scope="col">Country Name</th>
-                        <th scope="col">Municipio Name</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Nombre del Pais</th>
+                        <th scope="col">Nombre del Municipio</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,12 +33,12 @@
                         <td>{{ $pais->muni_nomb }}</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a href="{{ route('paises.edit', ['pais' => $pais->pais_codi]) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="{{ route('paises.edit', ['pais' => $pais->pais_codi]) }}" class="btn btn-info btn-sm">Editar</a>
 
                                 <form action="{{ route('paises.destroy', ['pais' => $pais->pais_codi]) }}" method="POST" style="display: inline;">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                 </form>
                             </div>
                         </td>

@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-5">
         <div class="card shadow-sm rounded p-4">
-            <h1 class="text-primary mb-4">Edit Country</h1>
+            <h1 class="text-primary mb-4">Editar Pais</h1>
 
             <form method="POST" action="{{ route('paises.update', ['pais' => $pais->pais_codi]) }}">
                 @method('put')
@@ -24,12 +24,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Country</label>
+                    <label for="name" class="form-label">Pais</label>
                     <input type="text" required class="form-control" id="name" name="name" value="{{ $pais->pais_nomb }}">
                 </div>
 
                 <div class="mb-3">
-                    <label for="capital" class="form-label">Capital</label>
+                    <label for="capital" class="form-label">Municipio</label>
                     <select class="form-select" id="capital" name="code" required>
                         <option selected disabled value="">Choose one...</option>
                         @foreach ($municipios as $municipio)
@@ -44,8 +44,8 @@
 
 
                 <div class="d-flex justify-content-between mt-4">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                    <a href="{{ route('paises.index') }}" class="btn btn-warning">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <a href="{{ route('paises.index') }}" class="btn btn-warning">Cancelar</a>
                 </div>
             </form>
         </div>

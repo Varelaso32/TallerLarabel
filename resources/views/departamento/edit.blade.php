@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Edit Department</h1>
+    <div class="container mt-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-primary">Editar Departamento</h1>
+        </div>
 
         <form method="POST" action="{{ route('departamentos.update', ['departamento' => $departamento->depa_codi]) }}">
             @method('put')
@@ -23,11 +26,11 @@
             </div>
 
             <div class="mb-3">
-                <label for="name" class="form-label">Department</label>
+                <label for="name" class="form-label">Departamento:</label>
                 <input type="text" required class="form-control" id="name" placeholder="Department name" name="name" value="{{ $departamento->depa_nomb }}">
             </div>
 
-            <label for="country">Country:</label>
+            <label for="country" class="form-label">Pais:</label>
             <select class="form-select" id="country" name="country_code" required>
                 <option selected disabled value="">Choose one...</option>
                 @foreach ($paises as $pais)
@@ -40,8 +43,8 @@
             </select>
 
             <div class="mt-3">
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('departamentos.index') }}" class="btn btn-warning">Cancel</a>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="{{ route('departamentos.index') }}" class="btn btn-warning">Cancelar</a>
             </div>
         </form>
     </div>
