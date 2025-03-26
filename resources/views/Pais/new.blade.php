@@ -26,6 +26,16 @@
                     <input type="text" class="form-control" id="name" name="name" required placeholder="Country name.">
                 </div>
 
+                <div class="mb-3">
+                    <label for="capital" class="form-label">Capital</label>
+                    <select class="form-select" id="capital" name="code" required>
+                        <option selected disabled value="">Choose one...</option>
+                        @foreach ($municipios as $municipio)
+                        <option value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="d-flex justify-content-between mt-4">
                     <button type="submit" class="btn btn-primary">Save</button>
                     <a href="{{ route('paises.index') }}" class="btn btn-warning">Cancel</a>
