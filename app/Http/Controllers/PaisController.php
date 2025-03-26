@@ -29,6 +29,7 @@ class PaisController extends Controller
     public function store(Request $request)
     {
         $pais = new Pais();
+        $pais->pais_codi = strtoupper(substr($request->name, 0, 3));
         $pais->pais_nomb = $request->name;
         $pais->pais_capi = $request->code;
         $pais->save();
@@ -38,6 +39,7 @@ class PaisController extends Controller
             ->select('tb_pais.*', 'tb_municipio.muni_nomb')
             ->get();
         return view("pais.index", ['paises' => $paises]);
+
     }
 
     /**
@@ -69,6 +71,13 @@ class PaisController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pais = Pais::find($id);
+        $pais->delete();
+
+        $paises = DB::table('tb_pais')
+            ->join('tb_municipio', 'tb_pais.pais_capi', '=', 'tb_municipio.muni_codi')
+            ->select('tb_pais.*', 'tb_municipio.muni_nomb')
+            ->get();
+        return view("pais.index", ['paises' => $paises]);
     }
 }
