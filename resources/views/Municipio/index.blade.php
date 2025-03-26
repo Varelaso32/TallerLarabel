@@ -11,8 +11,8 @@
 <body>
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="text-primary">Municipality List</h1>
-            <a href="{{ route('municipios.create') }}" class="btn btn-success">Add New Municipality</a>
+            <h1 class="text-primary">Listado de Municipiot</h1>
+            <a href="{{ route('municipios.create') }}" class="btn btn-success">Agregar Municipio</a>
         </div>
 
         <div class="table-responsive shadow-sm rounded">
@@ -20,9 +20,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Code</th>
-                        <th scope="col">Municipality</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,12 +33,12 @@
                         <td>{{ $municipio->depa_nomb }}</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a href="{{ route('municipios.edit', ['municipio' => $municipio->muni_codi]) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="{{ route('municipios.edit', ['municipio' => $municipio->muni_codi]) }}" class="btn btn-info btn-sm">Editar</a>
 
                                 <form action="{{ route('municipios.destroy', ['municipio' => $municipio->muni_codi]) }}" method="POST" style="display: inline;">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                 </form>
                             </div>
                         </td>

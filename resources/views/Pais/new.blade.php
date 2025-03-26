@@ -4,41 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Municipality</title>
+    <title>Add Country</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container mt-5">
         <div class="card shadow-sm rounded p-4">
-            <h1 class="text-primary mb-4">Agregar Municipio/h1>
+            <h1 class="text-primary mb-4">Agregar Pais</h1>
 
-            <form method="POST" action="{{ route('municipios.store') }}">
+            <form method="POST" action="{{ route('paises.store') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="id" class="form-label">Code</label>
                     <input type="text" class="form-control" id="id" name="Id" disabled>
-                    <div id="idHelp" class="form-text">Municipality code</div>
+                    <div id="idHelp" class="form-text">Country code</div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Municipio:</label>
-                    <input type="text" class="form-control" id="name" name="name" required placeholder="Municipality name.">
+                    <label for="name" class="form-label">Nombre del Pais:</label>
+                    <input type="text" class="form-control" id="name" name="name" required placeholder="Country name.">
                 </div>
 
                 <div class="mb-3">
-                    <label for="department" class="form-label">Departamento:</label>
-                    <select class="form-select" id="department" name="code" required>
+                    <label for="capital" class="form-label">Municipio:</label>
+                    <select class="form-select" id="capital" name="code" required>
                         <option selected disabled value="">Choose one...</option>
-                        @foreach ($departamentos as $departamento)
-                        <option value="{{ $departamento->depa_codi }}">{{ $departamento->depa_nomb }}</option>
+                        @foreach ($municipios as $municipio)
+                        <option value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="d-flex justify-content-between mt-4">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="{{ route('municipios.index') }}" class="btn btn-warning">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{{ route('paises.index') }}" class="btn btn-warning">Cancelar</a>
                 </div>
             </form>
         </div>

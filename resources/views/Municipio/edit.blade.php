@@ -10,7 +10,9 @@
 
 <body>
     <div class="container">
-        <h1>Edit Municipality</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-primary">Editar Municipio</h1>
+        </div>
 
         <form method="POST" action="{{ route('municipios.update', ['municipio' => $municipio->muni_codi]) }}">
             @method('put')
@@ -23,11 +25,11 @@
             </div>
 
             <div class="mb-3">
-                <label for="name" class="form-label">Municipality</label>
+                <label for="name" class="form-label">Municipio:</label>
                 <input type="text" required class="form-control" id="name" placeholder="Municipality name" name="name" value="{{ $municipio->muni_nomb }}">
             </div>
 
-            <label for="department">Department:</label>
+            <label for="department">Departamento:</label>
             <select class="form-select" id="department" name="code" required>
                 <option selected disabled value="">Choose one...</option>
                 @foreach ($departamentos as $departamento)
@@ -40,8 +42,8 @@
             </select>
 
             <div class="mt-3">
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('municipios.index') }}" class="btn btn-warning">Cancel</a>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="{{ route('municipios.index') }}" class="btn btn-warning">Cancelar</a>
             </div>
         </form>
     </div>

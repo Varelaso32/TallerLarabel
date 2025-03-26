@@ -12,8 +12,8 @@
 
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="text-primary">Commune List</h1>
-            <a href="{{ route('comunas.create') }}" class="btn btn-success">Add New Commune</a>
+            <h1 class="text-primary">Lista de Comunas</h1>
+            <a href="{{ route('comunas.create') }}" class="btn btn-success">Agregar nueva comuna</a>
         </div>
 
         <div class="table-responsive shadow-sm rounded">
@@ -21,9 +21,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Code</th>
-                        <th scope="col">Commune</th>
-                        <th scope="col">Municipality</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Comuna</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,12 +34,12 @@
                         <td>{{ $comuna->muni_nomb }}</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a href="{{ route('comunas.edit', ['comuna' => $comuna->comu_codi]) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="{{ route('comunas.edit', ['comuna' => $comuna->comu_codi]) }}" class="btn btn-info btn-sm">Editar</a>
 
                                 <form action="{{ route('comunas.destroy', ['comuna' => $comuna->comu_codi]) }}" method="POST" style="display: inline;">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                 </form>
                             </div>
                         </td>
