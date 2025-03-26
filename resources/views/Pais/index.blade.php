@@ -21,6 +21,7 @@
                     <tr>
                         <th scope="col">Code</th>
                         <th scope="col">Country Name</th>
+                        <th scope="col">Pais Capi</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -29,6 +30,7 @@
                     <tr>
                         <th scope="row">{{ $pais->pais_codi }}</th>
                         <td>{{ $pais->pais_nomb }}</td>
+                        <td>{{ $pais->pais_capi }}</td>
                         <td>
                             <div class="d-flex gap-2">
                                 <a href="{{ route('paises.edit', ['pais' => $pais->pais_codi]) }}" class="btn btn-info btn-sm">Edit</a>
